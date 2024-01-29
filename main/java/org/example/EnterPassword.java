@@ -10,7 +10,7 @@ public class EnterPassword {
         System.out.println("Enter password:");
         input = scanner.nextLine();
 
-        if(PasswordValidator.validatePassword(input)){
+        if(PasswordValidator.isSafe(input)){
             System.out.println("Password validated");
         } else if (input.equals("?")){
             input = PasswordGenerator.generateSecurePassword();

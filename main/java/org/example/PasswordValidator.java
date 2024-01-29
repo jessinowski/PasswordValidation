@@ -5,7 +5,7 @@ package org.example;
 public class PasswordValidator {
 
     //Checht ob alle Regeln eingehalten wurden
-    public static boolean validatePassword(String password){
+    public static boolean isSafe(String password){
         return hasAtLeast8Chars(password) &&
         hasDigits(password) &&
         isUpperAndLowerCase(password) &&
