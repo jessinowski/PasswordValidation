@@ -1,30 +1,31 @@
 package org.example;
 
 import java.security.SecureRandom;
+import java.util.Random;
 
 public class PasswordGenerator {
 
-    static String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    static String UPPER = " ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     static String LOWER = "abcdefghijklmnopqrstuvwxyz";
     static String DIGITS = "0123456789";
     static String SPECIALS = "!@#$%^&*()-_+=<>?";
 
     public static String generateSecurePassword() {
-        int randomLength = (int) (Math.random()*10);
+
         String characters = UPPER + LOWER + DIGITS + SPECIALS;
 
         SecureRandom random = new SecureRandom();
-        StringBuilder password = new StringBuilder();
+        StringBuilder passwordBuilder = new StringBuilder();
 
-        for (int i = 0; i < randomLength; i++) {
+        for (int i = 0; i < 8; i++) {
             int randomIndex = random.nextInt(characters.length());
-            password.append(characters.charAt(randomIndex));
+            passwordBuilder.append(characters.charAt(randomIndex));
         }
 
-        String generatedPassword = password.toString();
+        String password = passwordBuilder.toString();
 
-        if (PasswordValidator.hasAtLeast8Chars(generatedPassword) && PasswordValidator.hasDigits(generatedPassword) && PasswordValidator.isUpperAndLowerCase(generatedPassword) && PasswordValidator.isNotCommonlyUsed(generatedPassword) && PasswordValidator.hasSpecialChars(generatedPassword)) {
-            return generatedPassword;
+        if (PasswordValidator.hasDigits(password) && PasswordValidator.isUpperAndLowerCase(password) && PasswordValidator.isNotCommonlyUsed(password) && PasswordValidator.hasSpecialChars(password)) {
+            return password;
         }
         return generateSecurePassword();
     }
