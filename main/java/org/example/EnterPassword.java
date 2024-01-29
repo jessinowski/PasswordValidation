@@ -7,7 +7,7 @@ public class EnterPassword {
         Scanner scanner = new Scanner(System.in);
         String input;
 
-        System.out.println("Enter password:");
+        System.out.println("Enter password:\n(Press '?' to generate random password)");
         input = scanner.nextLine();
 
         if(PasswordValidator.isSafe(input)){
